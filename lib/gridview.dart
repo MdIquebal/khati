@@ -8,21 +8,45 @@ class Products extends StatefulWidget {
 class _ProductsState extends State<Products> {
   var Product_List = [
     {
-      'name': 'Blazer',
+      'name': 'Shirt',
       'picture': 'images/pic1.png',
-      'old price': 120,
-      'price': 85,
+      'old_price': 50,
+      'price': 35,
     },
-
-     { 'name': 'Blazer',
+    {
+      'name': 'Mastered Oil',
       'picture': 'images/pic2.png',
-      'old_price': 100,
-      'price': 50,
+      'old_price': 5,
+      'price': 3.5,
+    },
+    {
+      'name': 'Honey',
+      'picture': 'images/pic3.png',
+      'old_price': 20,
+      'price': 10,
+    },
+    {
+      'name': 'Logo',
+      'picture': 'images/pic4.png',
+      'old_price': 10,
+      'price': 5,
     }
   ];
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return GridView.builder(
+      itemCount: Product_List.length,
+      gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      itemBuilder: (BuildContext context, int index) {
+        return Single_prod(
+          prod_name: Product_List[index]['name'],
+          prod_picture: Product_List[index]['picture'],
+          prod_old_price: Product_List[index]['old_price'],
+          Prod_price: Product_List[index]['price'],
+        );
+      },
+    );
   }
 }
 
@@ -32,14 +56,47 @@ class Single_prod extends StatelessWidget {
   final prod_old_price;
   final Prod_price;
 
-  Single_prod({
-    this.prod_name,
-    this.prod_picture,
-    this.prod_old_price,
-    this.Prod_price
-  });
+  Single_prod(
+      {this.prod_name,
+      this.prod_picture,
+      this.prod_old_price,
+      this.Prod_price});
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Card(
+      child: Hero(
+        tag: prod_name,
+        child: Material(
+          child: InkWell(
+            onTap: () {},
+            child: GridTile(
+              footer: Container(
+                color: Colors.white70,
+                child: ListTile(
+                  leading: Text(
+                    prod_name,
+                    style: TextStyle(fontWeight: FontWeight.w900),
+                  ),
+                  title: Text(
+                    '\$$Prod_price',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  subtitle: Text(
+                    '\$$prod_old_price',
+                    style: TextStyle(
+                        color: Colors.black,
+                        decoration: TextDecoration.lineThrough),
+                  ),
+                ),
+              ),
+              child: Image.asset(
+                prod_picture,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

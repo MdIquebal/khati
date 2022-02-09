@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(10.0),
             child: Text(
               'Categories :',
-              style: TextStyle(color: Colors.black, fontSize: 20.0),
+              style: TextStyle(color: Colors.black, fontSize: 15.0),
             ),
           ),
           HorizontalList(),
@@ -179,13 +179,12 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(10.0),
             child: Text(
               'Recent Products :',
-              style: TextStyle(color: Colors.black, fontSize: 20.0),
+              style: TextStyle(color: Colors.black, fontSize: 15.0),
             ),
           ),
           Container(
             height: 250.0,
             width: 150.0,
-           
             child: Products(),
           ),
         ],

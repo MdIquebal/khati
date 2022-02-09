@@ -5,7 +5,7 @@ class HorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 120.0,
-      color: Colors.grey,
+      color: Colors.blue.shade200,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
