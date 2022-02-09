@@ -2,6 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'gridview.dart';
+import 'horizontal_list.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -13,6 +16,7 @@ final urlImages = [
   'https://images.pexels.com/photos/53141/rose-red-blossom-bloom-53141.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
   'https://images.pexels.com/photos/5723626/pexels-photo-5723626.jpeg?cs=srgb&dl=pexels-sarah-dauchy-5723626.jpg&fm=jpg',
   'https://images.pexels.com/photos/53141/rose-red-blossom-bloom-53141.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+  'https://images.pexels.com/photos/5723626/pexels-photo-5723626.jpeg?cs=srgb&dl=pexels-sarah-dauchy-5723626.jpg&fm=jpg',
 ];
 
 class _HomePageState extends State<HomePage> {
@@ -131,40 +135,58 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Center(
-            child: CarouselSlider.builder(
-              carouselController: controller,
-              options: CarouselOptions(
-                height: 200.0,
-                autoPlay: true,
-                initialPage: 0,
-                //autoPlayAnimationDuration: Duration(seconds: 2),
-                enlargeCenterPage: true,
-                enlargeStrategy: CenterPageEnlargeStrategy.height,
-                //pageSnapping: true,
-                //enableInfiniteScroll: false,
-                autoPlayInterval: Duration(seconds: 5),
-                onPageChanged: (index, reason) =>
-                    setState(() => activeIndex = index),
-              ),
-              itemCount: urlImages.length,
-              itemBuilder: (context, index, realIndex) {
-                final urlImage = urlImages[index];
-                return buildImage(urlImage, index);
-              },
+          CarouselSlider.builder(
+            carouselController: controller,
+            options: CarouselOptions(
+              height: 200.0,
+              autoPlay: true,
+              initialPage: 0,
+              //autoPlayAnimationDuration: Duration(seconds: 2),
+              enlargeCenterPage: true,
+              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              //pageSnapping: true,
+              //enableInfiniteScroll: false,
+              autoPlayInterval: Duration(seconds: 5),
+              onPageChanged: (index, reason) =>
+                  setState(() => activeIndex = index),
+            ),
+            itemCount: urlImages.length,
+            itemBuilder: (context, index, realIndex) {
+              final urlImage = urlImages[index];
+              return buildImage(urlImage, index);
+            },
+          ),
+          SizedBox(height: 12.0),
+          Container(
+            height: 40.0,
+            width: 100.0,
+            child: Center(
+              child: buildIndicator(),
             ),
           ),
-          SizedBox(height: 32.0),
-          buildIndicator(),
-          SizedBox(height: 32.0),
+          SizedBox(height: 10.0),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(10.0),
             child: Text(
               'Categories :',
               style: TextStyle(color: Colors.black, fontSize: 20.0),
             ),
+          ),
+          HorizontalList(),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text(
+              'Recent Products :',
+              style: TextStyle(color: Colors.black, fontSize: 20.0),
+            ),
+          ),
+          Container(
+            height: 250.0,
+            width: 150.0,
+           
+            child: Products(),
           ),
         ],
       ),
@@ -179,11 +201,21 @@ Widget buildImage(String urlImages, int index) => Container(
       child: Image.network(urlImages, fit: BoxFit.cover),
     );
 
-Widget buildIndicator() => AnimatedSmoothIndicator(
-      activeIndex: activeIndex,
-      count: urlImages.length,
-      onDotClicked: animateToSlide,
-      effect: JumpingDotEffect(dotHeight: 20.0, dotWidth: 20.0),
+Widget buildIndicator() => Container(
+      height: 20.0,
+      width: 400.0,
+      padding: EdgeInsets.symmetric(horizontal: 150.0),
+      color: Colors.black,
+      child: AnimatedSmoothIndicator(
+        activeIndex: activeIndex,
+        count: urlImages.length,
+        onDotClicked: animateToSlide,
+        effect: SlideEffect(
+          dotHeight: 10.0,
+          dotWidth: 20.0,
+          dotColor: Colors.red,
+        ),
+      ),
     );
 
 Widget buildButtons({bool stretch = false}) => Row(
@@ -211,7 +243,7 @@ Widget buildButtons({bool stretch = false}) => Row(
           child: Icon(
             Icons.arrow_forward,
             size: 32.0,
-            color: Colors.white,
+            color: Colors.black,
           ),
           onPressed: next,
         ),
