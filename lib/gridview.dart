@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:e_commerce/pages/product_detail.dart';
 
 class Products extends StatefulWidget {
   @override
@@ -55,12 +56,14 @@ class Single_prod extends StatelessWidget {
   final prod_picture;
   final prod_old_price;
   final Prod_price;
+  
 
   Single_prod(
       {this.prod_name,
       this.prod_picture,
       this.prod_old_price,
-      this.Prod_price});
+      this.Prod_price,
+      });
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -68,7 +71,17 @@ class Single_prod extends StatelessWidget {
         tag: prod_name,
         child: Material(
           child: InkWell(
-            onTap: () {},
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ProductDetail(
+                  product_detail_name: prod_name,
+                  product_detail_Picture: prod_picture,
+                  product_detail_new_price: Prod_price,
+                  product_detail_old_price: prod_old_price,
+                  
+                ),
+              ),
+            ),
             child: GridTile(
               footer: Container(
                 color: Colors.white70,
