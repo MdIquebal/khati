@@ -49,6 +49,7 @@ class _HomePageState extends State<HomePage> {
               size: 30.0,
             ),
           ),
+          
         ],
       ),
       drawer: Drawer(
@@ -94,9 +95,9 @@ class _HomePageState extends State<HomePage> {
             InkWell(
               onTap: () {},
               child: ListTile(
-                title: Text('Categories'),
+                title: Text('Shopping Cart'),
                 leading: Icon(
-                  Icons.dashboard,
+                  Icons.shopping_cart,
                   color: Colors.pink.shade200,
                 ),
               ),
