@@ -1,3 +1,5 @@
+import 'package:e_commerce/homepage.dart';
+import 'package:e_commerce/pages/cart_prod.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends StatefulWidget {
@@ -14,9 +16,18 @@ class _CartState extends State<Cart> {
         elevation: 0.0,
         backgroundColor: Colors.pink.shade200,
         centerTitle: true,
-        title: Text(
-          'khati',
-          style: TextStyle(fontSize: 40.0, color: Colors.white),
+        title: InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
+          },
+          child: Text(
+            'Your Shopping Cart',
+            style: TextStyle(fontSize: 20.0, color: Colors.white),
+          ),
         ),
         actions: [
           IconButton(
@@ -36,6 +47,28 @@ class _CartState extends State<Cart> {
             ),
           ),
         ],
+      ),
+      body: Cart_prod(),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: Row(children: [
+          Expanded(
+            child: ListTile(
+              title: Text('Total:'),
+              subtitle: Text(
+                '\$250.00',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Expanded(
+            child: MaterialButton(
+              onPressed: () {},
+              child: Text('Check Out'),
+              color: Colors.red,
+            ),
+          ),
+        ]),
       ),
     );
   }

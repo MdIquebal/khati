@@ -4,6 +4,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'gridview.dart';
 import 'horizontal_list.dart';
+import 'pages/cart.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -42,14 +43,19 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Cart(),
+                ),
+              );
+            },
             icon: Icon(
               Icons.shopping_cart,
               color: Colors.black,
               size: 30.0,
             ),
           ),
-          
         ],
       ),
       drawer: Drawer(
@@ -93,7 +99,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Cart(),
+                  ),
+                );
+              },
               child: ListTile(
                 title: Text('Shopping Cart'),
                 leading: Icon(

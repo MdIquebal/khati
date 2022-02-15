@@ -4,7 +4,7 @@ class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120.0,
+      height: 100.0,
       color: Colors.blue.shade200,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -15,23 +15,23 @@ class HorizontalList extends StatelessWidget {
           ),
           Category(
             image_location: 'images/pic2.png',
-            image_caption: 'Shirt',
+            image_caption: 'Mas. Oil',
           ),
           Category(
             image_location: 'images/pic3.png',
-            image_caption: 'Shirt',
+            image_caption: 'Homey',
           ),
           Category(
             image_location: 'images/pic4.png',
-            image_caption: 'Shirt',
+            image_caption: 'Logo',
           ),
           Category(
             image_location: 'images/tshirt.png',
-            image_caption: 'Shirt',
+            image_caption: 'T-Shirt',
           ),
           Category(
             image_location: 'images/pic1.png',
-            image_caption: 'Shirt',
+            image_caption: 'T-Shirt',
           ),
           Category(
             image_location: 'images/pic2.png',
@@ -112,16 +112,19 @@ class Category extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Container(
-          width: 90.0,
+          width: 100.0,
           child: ListTile(
             title: Image.asset(
               image_location,
-              height: 50.0,
-              width: 90.0,
+              height: 70.0,
+              width: 100.0,
               fit: BoxFit.cover,
             ),
-            subtitle: Center(
-              child: Text(image_caption),
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(image_caption),
+              ],
             ),
           ),
         ),

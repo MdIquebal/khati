@@ -1,6 +1,8 @@
 import 'package:e_commerce/homepage.dart';
 import 'package:flutter/material.dart';
 
+import 'cart.dart';
+
 class ProductDetail extends StatefulWidget {
   final product_detail_name;
   final product_detail_Picture;
@@ -50,7 +52,11 @@ class _ProductDetailState extends State<ProductDetail> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Cart()),
+              );
+            },
             icon: Icon(
               Icons.shopping_cart,
               color: Colors.black,
@@ -108,7 +114,7 @@ class _ProductDetailState extends State<ProductDetail> {
                               builder: (context) {
                                 return AlertDialog(
                                   title: Text('Size'),
-                                  content: Text('Choose the size'),
+                                  content: Text('Choose the size:'),
                                   actions: [
                                     MaterialButton(
                                       onPressed: () {
@@ -146,8 +152,8 @@ class _ProductDetailState extends State<ProductDetail> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                content: Text('Colors'),
-                                title: Text('Choose a color'),
+                                content: Text('Choose a color:'),
+                                title: Text('Color'),
                                 actions: [
                                   MaterialButton(
                                     onPressed: () {
@@ -170,7 +176,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: Text('Price'),
+                              child: Text('Color'),
                             ),
                             Expanded(
                               child: Icon(Icons.arrow_drop_down),
@@ -187,7 +193,7 @@ class _ProductDetailState extends State<ProductDetail> {
                               builder: (context) {
                                 return AlertDialog(
                                   title: Text('Quantity'),
-                                  content: Text('Choose quantity'),
+                                  content: Text('Select quantity:'),
                                   actions: [
                                     MaterialButton(
                                       onPressed: () {
@@ -224,60 +230,71 @@ class _ProductDetailState extends State<ProductDetail> {
             ),
           ),
           Divider(),
-          Row(
-            children: [
-              Expanded(
-                child: MaterialButton(
-                  onPressed: () {},
-                  color: Colors.red,
-                  textColor: Colors.white,
-                  elevation: 0.2,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Center(child: Text('Buy Now')),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: MaterialButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  textColor: Colors.red,
-                  elevation: 0.2,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Icon(
-                          Icons.add_shopping_cart,
-                          color: Colors.red,
+          Container(
+            color: Colors.red,
+            height: 40.0,
+            child: Row(
+              children: [
+                Expanded(
+                  child: MaterialButton(
+                    onPressed: () {},
+                    color: Colors.red,
+                    textColor: Colors.white,
+                    elevation: 0.2,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Center(child: Text('Buy Now')),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: MaterialButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  textColor: Colors.red,
-                  elevation: 0.2,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Icon(
-                          Icons.favorite,
-                          color: Colors.red,
+                Expanded(
+                  child: MaterialButton(
+                    onPressed: () {},
+                    color: Colors.white,
+                    textColor: Colors.red,
+                    elevation: 0.2,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Add to cart'),
+                              Icon(
+                                Icons.add_shopping_cart,
+                                color: Colors.red,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(width: 2.0,),
+                Expanded(
+                  child: MaterialButton(
+                    onPressed: () {},
+                    color: Colors.white,
+                    textColor: Colors.red,
+                    elevation: 0.2,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Divider(),
           Column(
@@ -341,7 +358,7 @@ class _Similar_productState extends State<Similar_product> {
       'brand_name': 'Man',
     },
     {
-      'name': 'Mastered Oil',
+      'name': 'Mas. Oil',
       'picture': 'images/pic2.png',
       'old_price': 5,
       'price': 3.5,

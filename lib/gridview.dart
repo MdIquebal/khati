@@ -16,7 +16,7 @@ class _ProductsState extends State<Products> {
       'brand_name': 'Man',
     },
     {
-      'name': 'Mastered Oil',
+      'name': 'Mas. Oil',
       'picture': 'images/pic2.png',
       'old_price': 5,
       'price': 3.5,
